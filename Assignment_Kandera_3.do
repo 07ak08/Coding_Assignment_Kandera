@@ -27,15 +27,5 @@ summarize log_price
 gen price_per_guest = price / accommodates
 summarize price_per_guest
 
-* binary indicator for high availability (more than 200 days available per year)
-gen high_availability = (availability_365 > 200)
-summarize high_availability
-
-* binary variable if property is entire home/apartment
-gen entire_property = (room_type == "Entire home/apt")
-summarize entire_property
-
-tabulate high_availability entire_property
-
 * save modified data
 save "airbnb_london_listing_modified.dta", replace
